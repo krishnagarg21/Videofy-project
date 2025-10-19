@@ -10,11 +10,11 @@ export async function POST(request: NextRequest){
         const {email, password} = await request.json();
         if(!email || !password){
             return NextResponse.json(
-                {error: "Emaiil or Password is required"},
+                {error: "Email or Password is required"},
                 {status: 400}
             )
         }
-
+        
         //check exsting user
        await ConnectToDB()
        const existingUser =  await User.findOne({email})
